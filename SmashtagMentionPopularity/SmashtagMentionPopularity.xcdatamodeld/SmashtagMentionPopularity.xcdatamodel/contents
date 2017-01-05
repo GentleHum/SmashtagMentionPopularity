@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16C67" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="TwitterMessage" representedClassName=".TwitterMessage" syncable="YES">
+        <attribute name="posted" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unique" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="searches" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterSearch" inverseName="tweets" inverseEntity="TwitterSearch" syncable="YES"/>
+        <relationship name="tweeter" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TwitterUser" inverseName="tweets" inverseEntity="TwitterUser" syncable="YES"/>
+    </entity>
+    <entity name="TwitterSearch" representedClassName=".TwitterSearch" syncable="YES">
+        <attribute name="created" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tweets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterMessage" inverseName="searches" inverseEntity="TwitterMessage" syncable="YES"/>
+    </entity>
+    <entity name="TwitterSearchMention" representedClassName=".TwitterSearchMention" syncable="YES">
+        <attribute name="count" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="mention" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="searchText" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TwitterUser" representedClassName=".TwitterUser" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="screenName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tweets" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TwitterMessage" inverseName="tweeter" inverseEntity="TwitterMessage" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="TwitterMessage" positionX="153" positionY="14" width="128" height="118"/>
+        <element name="TwitterSearchMention" positionX="142" positionY="173" width="128" height="88"/>
+        <element name="TwitterUser" positionX="-54" positionY="18" width="128" height="88"/>
+        <element name="TwitterSearch" positionX="349" positionY="27" width="128" height="88"/>
+    </elements>
+</model>
